@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
 import logo from './logo.svg';
 import './App.css';
 
@@ -14,10 +15,8 @@ class App extends Component {
       <div>
         <h1>Hello, World!</h1>
         <ListOfItems tableContent={TABLE_CONTENT} />
-        {/*
         <MyForm />
         <ResizableImg />
-        */}
       </div>
     );
   }
@@ -49,9 +48,10 @@ class ResizableImg extends Component {
       borderColor: 'red'
     }
     return (
-      <div style={localStyle}>
-        <button onClick={this.handleClick.bind(this, -20)}>-</button>
-        <button onClick={this.handleClick.bind(this, 20)}>+</button>
+      //<div style={localStyle}>
+      <div>
+        <Button bsStyle="danger" onClick={this.handleClick.bind(this, -20)}>-</Button>
+        <Button bsStyle="success" onClick={this.handleClick.bind(this, 20)}>+</Button>
         <br />
         <img src={logo} height={height}/>
       </div>
