@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
+
+import Button from 'react-bootstrap/lib/Button';
 import logo from '../logo.svg';
 
 class ResizableImg extends Component {

@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
-import MyForm from './localCompoments/MyForm';
-import ResizableImg from './localCompoments/ResizableImg';
+import React, { Component } from 'react'
+
+import Button from 'react-bootstrap/lib/Button'
+import IndexLink from 'react-router/lib/IndexLink'
+import Link from 'react-router/lib/Link'
 
 class App extends Component {
   render() {
@@ -14,13 +16,16 @@ class App extends Component {
       <div>
         <h1>Hello, World!</h1>
         <ListOfItems tableContent={TABLE_CONTENT} />
-        <MyForm />
-        <ResizableImg />
+        <IndexLink to="/"><Button>home</Button></IndexLink>
+        <Link to="first"><Button>first</Button></Link>
+        <Link to="second"><Button>second</Button></Link>
+        <div>
+          {this.props.children}
+        </div>
       </div>
     );
   }
 }
-export default App;
 
 class ListOfItems extends Component {
   render() {
@@ -55,3 +60,6 @@ Item.defaultProps = {
   title: "Title",
   subTitle: "SubTitle"
 }
+
+
+export default App;
