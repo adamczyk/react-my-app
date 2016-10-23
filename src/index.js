@@ -14,15 +14,32 @@ import Route from 'react-router/lib/Route'
 import Router from 'react-router/lib/Router'
 import SecondPage from './pages/SecondPage'
 
-
+import {Provider} from 'react-redux'
+import store from './redux/store'
 
 ReactDOM.render((
-  <Router history={hashHistory}>
+/*  <Router history={hashHistory}>
   	<Route path="/" component={App}>
   		<IndexRoute component={HomePage}></IndexRoute>
   		<Route path="first(/:test)" component={FirstPage}></Route>
   		<Route path="second" component={SecondPage}></Route>
   	</Route>
-  </Router>
+  </Router>*/
+  <Provider store={store}>
+  	<App />
+  </Provider>
   ), document.getElementById('root'))
+
+
+
+
+
+
+
+
+
+
+
+
+
 

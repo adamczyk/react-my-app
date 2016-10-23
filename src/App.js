@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
 
 import Button from 'react-bootstrap/lib/Button'
 import IndexLink from 'react-router/lib/IndexLink'
 import Link from 'react-router/lib/Link'
+
+import { addNumber, subtractNumber } from './redux/actions'
 
 class App extends Component {
   render() {
@@ -15,6 +18,11 @@ class App extends Component {
     return (
       <div>
         <h1>Hello, World!</h1>
+        <div>
+          <h2>{this.props.reducer.result}</h2>
+          <Button onClick={() => this.props.subtractNumber(1)}>Subtract number</Button>
+          <Button onClick={() => this.props.addNumber(1)}>Add number</Button>
+        </div>
         <ListOfItems tableContent={TABLE_CONTENT} />
         <IndexLink to="/"><Button>home</Button></IndexLink>
         <Link to="first"><Button>first</Button></Link>
@@ -61,5 +69,29 @@ Item.defaultProps = {
   subTitle: "SubTitle"
 }
 
+//REDUX
+const mapStateToProps = (state) => {
+  return {
+    reducer: state.reducer
+  }
+}
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addNumber: (number) => {
+      /*dispatch({
+        type: "ADD",
+        payload: number
+      })*/
+      dispatch(addNumber(number))
+    },
+    subtractNumber: (number) => {
+      dispatch(subtractNumber(number))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
+
+
+//export default App;
